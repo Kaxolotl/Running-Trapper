@@ -12,12 +12,10 @@ public class GroundManager : MonoBehaviour
     Transform _nextGround;
     SpriteRenderer _currentSprite;
     SpriteRenderer _nextSprite;
-
-    public float groundSpeed;
-
+    
     void Init()
     {
-        groundSpeed = 0.1f;
+        GameManager.Instance.groundSpeed = 0.1f;
 
         // GroundManager오브젝트의 자식인 스프라이트 가진 오브젝트들을 Transform 배열에 넣음
         for (int i = 0; i < GROUNDSPRITE; i++)
@@ -55,8 +53,8 @@ public class GroundManager : MonoBehaviour
         // 땅 이동, 양쪽이 null이 아니면 움직임
         if (_currentGround != null && _nextGround != null)
         {
-            _currentGround.transform.Translate(new Vector2(-groundSpeed, 0));
-            _nextGround.transform.Translate(new Vector2(-groundSpeed, 0));
+            _currentGround.transform.Translate(new Vector2(-GameManager.Instance.groundSpeed, 0));
+            _nextGround.transform.Translate(new Vector2(-GameManager.Instance.groundSpeed, 0));
         }
 
         // next가 null이 되면 next에 ground 집어넣는다
